@@ -1,0 +1,40 @@
+{% extends "core/base.html" %}
+{% block title %}Home{% endblock %}
+
+
+{% block content %}
+<div class="intro-section">
+    <div class="intro-content text-center">
+        <h1 class="intro-title">Welcome to Beymore Voting 🐝</h1>
+        <p class="intro-text">
+            Here’s your chance to show love to Beyoncé’s legendary discography.
+            From <em>Dangerously in Love</em> to <em>Cowboy Carter</em>, every album has shaped the culture.
+            Cast your vote for the album and song that reigns supreme in your heart, and see which era the Hive crowns
+            as the
+            ultimate favorite.
+            Your voice matters, and Beyoncé would say… <strong>“Who run the world? You do!”</strong>
+        </p>
+
+        <p class="voting-dates">
+            The first Album voting session runs from <strong>4 Sept to 13 Sept</strong>
+        </p>
+        <a href="{% url 'join_lobby' %}" class="btn-main">✨ Join Lobby ✨</a>
+    </div>
+</div>
+
+
+<footer class="bg-dark text-light py-4 mt-auto">
+    <div class="container">
+        <div class="row text-center text-md-start align-items-center">
+            <!-- Left: Copyright + Designed by -->
+            <div class="col-md-6 mb-3 mb-md-0">
+                <p class="mb-0">&copy; 2025 Beymore. All rights reserved.</p>
+                <small class="d-block">Designed by Lefa Mofokeng  <a href="https://instagram.com/yourusername" target="_blank" class="text-light">
+                    <i class="fab fa-instagram fa-lg"></i>
+                </a> :theyenvyllefa </small>
+            </div>    
+        </div>
+    </div>
+</footer>
+{% endblock %}
+

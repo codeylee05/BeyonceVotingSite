@@ -1,0 +1,206 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fdfdfd;
+}
+
+.navbar {
+    background-color: #000;
+}
+
+.navbar-brand {
+    font-weight: 600;
+    color: gold !important;
+}
+
+.nav-link {
+    color: #fff;
+}
+
+.form-container {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-gold {
+    background-color: gold;
+    color: #000;
+    font-weight: 600;
+}
+
+.btn-gold:hover {
+    background-color: #e6c200;
+    color: #000;
+}
+
+/* Intro Section */
+.intro-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #fceabb, #f8b500);
+    /* gold + honey vibes */
+    padding: 2rem;
+}
+
+.intro-content {
+    max-width: 650px;
+}
+
+.intro-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c2c2c;
+    font-family: 'Helvetica Neue', sans-serif;
+    margin-bottom: 1rem;
+}
+
+.intro-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+/* Vote Button */
+.btn-main {
+    display: inline-block;
+    background: #111;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-main:hover {
+    background: #444;
+    transform: translateY(-2px);
+}
+
+.voting-dates {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #b10dc9;
+    /* Beyoncé purple */
+    margin-bottom: 25px;
+    animation: pulse 1.8s infinite;
+
+}
+
+/* Lobby page */
+.lobby-container {
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 30px;
+    border-radius: 12px;
+    background: #fdfdfd;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.count-display {
+    margin-top: 20px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #7b2cbf;
+    animation: pulse 1.8s infinite;
+
+}
+
+.lobby-alert {
+    background-color: #3b0066;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.btn-main-2 {
+    background: #3b0066;
+    height: 50px;
+}
+
+.timer-box {
+    background-color: #3b0066;
+    min-width: 100px;
+    transition: transform 0.2s;
+}
+
+.timer-box:hover {
+    transform: scale(1.05);
+}
+
+.timer-box h2 {
+    font-size: 2.5rem;
+}
+
+.timer-box p {
+    margin: 0;
+    font-weight: bold;
+}
+
+.voting-page-title {
+    color: #f8b500;
+    font-size: 2.3rem;
+}
+
+
+/* Animations */
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .intro-title {
+        font-size: 2rem;
+    }
+
+    .intro-text {
+        font-size: 1rem;
+    }
+
+    .btn-vote {
+        font-size: 1rem;
+        padding: 0.7rem 1.5rem;
+    }
+
+
+    .voting-page-title {
+        font-size: 1.7rem;
+    }
+
+    #countdown {
+        flex-wrap: wrap;
+        /* allow wrapping */
+    }
+
+    .timer-box {
+        flex: 0 0 48%;
+        /* 2 boxes per row with gap */
+        margin-bottom: 0.5rem;
+    }
+}

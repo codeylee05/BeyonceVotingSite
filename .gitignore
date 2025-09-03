@@ -1,0 +1,42 @@
+# Python cache / compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment / virtualenv
+env/
+venv/
+.venv/
+ENV/
+VENV/
+*.env
+.env.*
+
+# Django stuff
+*.log
+*.pot
+*.pyc
+*.pyo
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+
+# IDE / editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Pytest cache
+.pytest_cache/
+
+# Coverage reports
+htmlcov/
+.coverage
+coverage.xml
+nosetests.xml

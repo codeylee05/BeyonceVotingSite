@@ -1,0 +1,56 @@
+{% extends "core/base.html" %}
+
+{% block title %}
+Vote for Album
+{% endblock %}
+
+{% block content %}
+<div class="container text-center my-5">
+    <h1 class="mb-4 voting-page-title">Beyoncé Album Voting </h1>
+    <p class="lead mb-5">Get ready to vote for your favorite Beyoncé album from 4 September 2025</p>
+
+    <div id="countdown" class="d-flex justify-content-center gap-4 flex-wrap">
+        <div class="timer-box p-3 rounded shadow text-white">
+            <h2 id="days">0</h2>
+            <p>Days</p>
+        </div>
+        <div class="timer-box p-3 rounded shadow text-white">
+            <h2 id="hours">0</h2>
+            <p>Hours</p>
+        </div>
+        <div class="timer-box p-3 rounded shadow text-white">
+            <h2 id="minutes">0</h2>
+            <p>Minutes</p>
+        </div>
+        <div class="timer-box p-3 rounded shadow text-white">
+            <h2 id="seconds">0</h2>
+            <p>Seconds</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Hardcoded countdown target date (UTC)
+    const countDownDate = new Date("Sep 4, 2025 00:00:00 UTC").getTime();
+
+    const x = setInterval(function () {
+        const now = new Date().getTime();
+        const distance = countDownDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerText = days;
+        document.getElementById("hours").innerText = hours;
+        document.getElementById("minutes").innerText = minutes;
+        document.getElementById("seconds").innerText = seconds;
+
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("countdown").innerHTML = "<h2>Voting is Live! 🎉</h2>";
+        }
+    }, 1000);
+</script>
+{% endblock %}
