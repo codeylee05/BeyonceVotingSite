@@ -1,14 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "core/base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
-</head>
+{% load static %}
 
-<body>
+{% block title %}Welcome {% endblock %}
 
-</body>
+{% block nav %}{% endblock %}
 
-</html>
+{% block content %}
+<main class="index-container d-flex flex-column justify-content-center align-items-center text-center">
+    <!--<div class="logo-container mb-4">
+        <img src="{% static 'core/media/beymore_logo.png' %}" alt="Beymore Logo" class="bey-logo">
+    </div>-->
+    <h1 class="mb-3">Beymore</h1>
+    <h2 class="subtitle mb-4">Vote for all things Beyoncé with fans from around the world</h2>
+
+    <div class="auth-buttons">
+        <a href="{% url 'signup' %}" class="btn btn-to-auth-1 w-100">Sign Up</a>
+        <a href="{% url 'login' %}" class="btn btn-to-auth-2 w-100">Log In</a>
+    </div>
+</main>
+{% endblock %}

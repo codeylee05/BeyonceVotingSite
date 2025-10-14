@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Lobby
+from ratelimit.decorators import ratelimit
 
 
 def index(request):
@@ -11,6 +12,7 @@ def index(request):
     return render(request, "core/index.html")
 
 
+@ratelimit(key='ip', rate='3/m', block=True)  # 3 sign-ups per minute per IP
 def signup_view(request):
     if request.method == "POST":
         email = request.POST.get("email")
@@ -36,6 +38,7 @@ def signup_view(request):
     return render(request, "core/signup.html")
 
 
+@ratelimit(key='ip', rate='5/m', method='POST', block=True, group='auth')
 def login_view(request):
     if request.method == "POST":
         username = request.POST.get("username")
@@ -62,14 +65,16 @@ def login_view(request):
 def logout_view(request):
 
     logout(request)
-    return redirect("login")
+    return redirect("index")
 
 
+@login_required
 def home_view(request):
 
     return render(request, "core/home.html")
 
 
+@ratelimit(key='ip', rate='3/m', block=True)  # 3 sign-ups per minute per IP
 @login_required
 def join_lobby(request):
 
@@ -90,6 +95,7 @@ def lobby(request):
     return render(request, "core/lobby.html", {"count": count})
 
 
+@login_required
 def album_voting(request):
 
     return render(request, "core/album_voting.html")
