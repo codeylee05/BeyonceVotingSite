@@ -111,7 +111,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 # Security settings for production
-''''Disable in development environment'''
+'''Disable in development environment'''
+
 SECURE_SSL_REDIRECT = True               # Force HTTPS
 SESSION_COOKIE_SECURE = True             # Cookies only sent over HTTPS
 CSRF_COOKIE_SECURE = True                # CSRF cookie only over HTTPS
