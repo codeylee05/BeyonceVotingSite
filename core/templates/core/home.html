@@ -4,6 +4,20 @@
 
 {% block title %}Home{% endblock %}
 
+{% block extra_head %}
+<style>
+    @media (max-width: 768px) {
+        .intro-section {
+            background-image: url("{% static 'core/beyonce_bg.jpg' %}") !important;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            overflow: hidden;
+            position: relative;
+        }
+    }
+</style>
+{% endblock %}
 
 {% block content %}
 <div class="page-wrapper">
@@ -29,7 +43,6 @@
         </div>
 
     </main>
-
 
 
 </div>

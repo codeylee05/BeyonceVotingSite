@@ -12,18 +12,8 @@
     <link rel="stylesheet" href="{% static 'core/styles/styles.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <style>
-        @media (max-width: 768px) {
-            .intro-section {
-                background-image: url("{% static 'core/media/beyonce_bg.jpg' %}");
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-                overflow: hidden;
-                position: relative;
-            }
-        }
-    </style>
+    {% block extra_head %}{% endblock %}
+
 
 </head>
 
