@@ -8,9 +8,7 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# -------------------------
-# Secret & Debug
-# -------------------------
+
 SECRET_KEY = os.getenv("SECRET_KEY", "fallback-secret-key")
 DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 
@@ -18,9 +16,7 @@ DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 ALLOWED_HOSTS = os.getenv(
     "ALLOWED_HOSTS", "127.0.0.1,localhost,beymore.up.railway.app").split(",")
 
-# -------------------------
-# Database
-# -------------------------
+
 if DEBUG:
     DATABASES = {
         "default": {
@@ -37,9 +33,7 @@ else:
         )
     }
 
-# -------------------------
-# Installed apps
-# -------------------------
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -50,9 +44,7 @@ INSTALLED_APPS = [
     'core',
 ]
 
-# -------------------------
-# Middleware
-# -------------------------
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',  # Serve static files
@@ -64,18 +56,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# -------------------------
-# Static files
-# -------------------------
+
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 os.makedirs(STATIC_ROOT, exist_ok=True)  # Ensure folder exists
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# -------------------------
-# Templates
-# -------------------------
+
 ROOT_URLCONF = 'BeyonceVotingSite.urls'
 
 TEMPLATES = [
@@ -96,9 +84,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'BeyonceVotingSite.wsgi.application'
 
-# -------------------------
-# Auth
-# -------------------------
+
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
@@ -112,18 +98,14 @@ LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "index"
 AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend']
 
-# -------------------------
-# Internationalization
-# -------------------------
+
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# -------------------------
-# Security settings for production
-# -------------------------
+
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECURE_SSL_REDIRECT = not DEBUG
 SESSION_COOKIE_SECURE = not DEBUG
