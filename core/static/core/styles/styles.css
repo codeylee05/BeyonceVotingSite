@@ -315,15 +315,7 @@ footer {
         margin-bottom: 0.5rem;
     }
 
-    /*.intro-section {
-        background-image: url('../media/beyonce_bg.jpg');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        overflow: hidden;
-        position: relative;
 
-    } /* Moved inline*/
 
     .intro-section::before {
         content: "";
