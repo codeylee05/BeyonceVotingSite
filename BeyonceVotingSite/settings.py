@@ -66,6 +66,8 @@ os.makedirs(STATIC_ROOT, exist_ok=True)  # Ensure folder exists
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'core', 'static')]
+
 
 ROOT_URLCONF = 'BeyonceVotingSite.urls'
 
