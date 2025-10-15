@@ -1,19 +1,35 @@
 import os
 from pathlib import Path
+import dj_database_url
+from dotenv import load_dotenv
 
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-hk-es8%i@tuhs#h!okm&!@rtu0xu1aitup04i(dm9@3=!%5ufa'
-
-DEBUG = False
-
-ALLOWED_HOSTS = []
+SECRET_KEY = os.getenv("SECRET_KEY", "fallback-secret-key")
+DEBUG = os.getenv("DEBUG", "False").lower() == "true"
+ALLOWED_HOSTS = ["*"]  # Railway injects its own hostname automatically
 
 
-# Application definition
+# DATABASE CONFIGURATION
+if DEBUG:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
+else:
+    DATABASES = {
+        "default": dj_database_url.config(
+            default=os.getenv("DATABASE_URL"),
+            conn_max_age=600,
+            ssl_require=True,
+        )
+    }
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -27,6 +43,8 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    # Serving static files in production
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -55,16 +73,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'BeyonceVotingSite.wsgi.application'
 
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-
-DATABASES['default']['CONN_MAX_AGE'] = 60  # keeps DB connections open for 60s
 
 AUTH_PASSWORD_VALIDATORS = [
     {

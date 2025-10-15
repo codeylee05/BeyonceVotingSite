@@ -11,6 +11,8 @@ ENV/
 VENV/
 *.env
 .env.*
+venv
+.env
 
 # Django stuff
 *.log
@@ -22,20 +24,16 @@ db.sqlite3-journal
 media/
 staticfiles/
 
-# IDE / editor files
 .vscode/
 .idea/
 *.sublime-project
 *.sublime-workspace
 
-# OS files
 .DS_Store
 Thumbs.db
 
-# Pytest cache
 .pytest_cache/
 
-# Coverage reports
 htmlcov/
 .coverage
 coverage.xml
