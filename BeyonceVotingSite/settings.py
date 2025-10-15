@@ -13,8 +13,11 @@ SECRET_KEY = os.getenv("SECRET_KEY", "fallback-secret-key")
 DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 
 # Hosts
-ALLOWED_HOSTS = os.getenv(
-    "ALLOWED_HOSTS", "127.0.0.1,localhost,beymore.up.railway.app").split(",")
+'''ALLOWED_HOSTS = os.getenv(
+    "ALLOWED_HOSTS", "127.0.0.1,localhost,beymore.up.railway.app").split(",")'''
+
+# Hardcoded from above to debug prod
+ALLOWED_HOSTS = ['beymore.up.railway.app', '127.0.0.1', 'localhost']
 
 
 if DEBUG:
@@ -107,12 +110,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SECURE_SSL_REDIRECT = not DEBUG
+'''SECURE_SSL_REDIRECT = not DEBUG'''
 SESSION_COOKIE_SECURE = not DEBUG
-CSRF_COOKIE_SECURE = not DEBUG
+'''CSRF_COOKIE_SECURE = not DEBUG
 SESSION_COOKIE_HTTPONLY = True
 SECURE_HSTS_SECONDS = 31536000 if not DEBUG else 0
 SECURE_HSTS_INCLUDE_SUBDOMAINS = not DEBUG
-SECURE_HSTS_PRELOAD = not DEBUG
+SECURE_HSTS_PRELOAD = not DEBUG'''
 SECURE_CONTENT_TYPE_NOSNIFF = True
 X_FRAME_OPTIONS = 'DENY'
+
+# Above some security settings removed for debugging prod
