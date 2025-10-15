@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv("SECRET_KEY", "fallback-secret-key")
 DEBUG = os.getenv("DEBUG", "False").lower() == "true"
-ALLOWED_HOSTS = ["*"]  # Railway injects its own hostname automatically
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "beymore.up.railway.app").split(",")
 
 
 # DATABASE CONFIGURATION
@@ -121,12 +121,17 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Security settings for production
 '''Disable in development environment'''
 
-SECURE_SSL_REDIRECT = True               # Force HTTPS
-SESSION_COOKIE_SECURE = True             # Cookies only sent over HTTPS
-CSRF_COOKIE_SECURE = True                # CSRF cookie only over HTTPS
 SECURE_HSTS_SECONDS = 31536000           # Force HTTPS for 1 year
 SECURE_CONTENT_TYPE_NOSNIFF = True       # Prevent MIME-type sniffing
 X_FRAME_OPTIONS = 'DENY'                 # Prevent clickjacking
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 SESSION_COOKIE_HTTPONLY = True
+
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Only redirect if not in DEBUG
+SECURE_SSL_REDIRECT = not DEBUG
+SESSION_COOKIE_SECURE = not DEBUG
+CSRF_COOKIE_SECURE = not DEBUG
