@@ -316,7 +316,7 @@ footer {
     }
 
     .intro-section {
-        background-image: url('/static/core/media/beyonce_bg.jpg');
+        background-image: url('../media/beyonce_bg.jpg');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
