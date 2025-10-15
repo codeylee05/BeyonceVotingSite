@@ -29,13 +29,13 @@ if DEBUG:
     }
 else:
     DATABASES = {
-    "default": dj_database_url.parse(
-        os.environ.get("DATABASE_URL"),
-        conn_max_age=600,
-        ssl_require=True
-    )
-}
-    
+        "default": dj_database_url.parse(
+            os.environ.get("DATABASE_URL"),
+            conn_max_age=600,
+            ssl_require=True
+        )
+    }
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -123,4 +123,3 @@ SECURE_HSTS_INCLUDE_SUBDOMAINS = not DEBUG
 SECURE_HSTS_PRELOAD = not DEBUG
 SECURE_CONTENT_TYPE_NOSNIFF = True
 X_FRAME_OPTIONS = 'DENY'
-
