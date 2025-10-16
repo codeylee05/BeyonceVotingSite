@@ -7,7 +7,7 @@ from django_countries.fields import CountryField
 class Profile(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    country = CountryField(blank_label='Select country')
+    country = CountryField(blank_label='Select country', blank=True)
 
     def __str__(self):
 

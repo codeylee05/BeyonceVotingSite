@@ -35,8 +35,7 @@
             <input type="password" name="password2" class="form-control" required>
         </div>
 
-        <select name="country" required>
-            <label>Country</label>
+        <select class="mb-3" name="country" required>
             <option value="">Select your country</option>
             {% for code, name in countries %}
             <option value="{{ code }}">{{ name }}</option>
