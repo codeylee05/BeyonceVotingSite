@@ -12,8 +12,6 @@ from django.contrib.admin.views.decorators import staff_member_required
 
 
 def fix_missing_profiles(request):
-    if not request.user.is_superuser:
-        return HttpResponse("Not authorized", status=403)
 
     created_count = 0
     for user in User.objects.all():
