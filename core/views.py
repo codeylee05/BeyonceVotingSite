@@ -3,7 +3,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Lobby
+from .models import Lobby, Profile
+from django_countries import countries
 
 
 def index(request):
@@ -17,6 +18,7 @@ def signup_view(request):
         first_name = request.POST["first_name"]
         password1 = request.POST.get("password1")
         password2 = request.POST.get("password2")
+        country = request.POST.get('country')
 
         if password1 != password2:
             messages.error(request, "Passwords do not match.")
@@ -29,11 +31,17 @@ def signup_view(request):
         # Use email as username
         user = User.objects.create_user(
             username=email, email=email, first_name=first_name, password=password1)
+
         user.save()
+        # A signal will create the profile automatically
+        user.profile.country = country
+        user.profile.save()
+
         messages.success(request, "Account created! Please log in.")
+
         return redirect("login")
 
-    return render(request, "core/signup.html")
+    return render(request, "core/signup.html", {'countries': countries})
 
 
 def login_view(request):
