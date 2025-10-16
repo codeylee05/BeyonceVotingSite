@@ -16,6 +16,5 @@ urlpatterns = [
 
     path("voteforalbum/", views.album_voting, name="album_voting"),
 
-    path("create_missing_profiles/", views.create_missing_profiles,
-         name="create_missing_profiles"),
+    
 ]

@@ -8,17 +8,6 @@ from .models import Lobby, Profile
 from django_countries import countries
 
 
-def create_missing_profiles(request):
-
-    count = 0
-
-    for user in User.objects.all():
-        if not hasattr(user, 'profile'):
-            Profile.objects.create(user=user)
-            count += 1
-
-    return HttpResponse(f"Created {count} missing profiles")
-
 
 def index(request):
 
