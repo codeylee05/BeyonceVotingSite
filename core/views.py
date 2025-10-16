@@ -8,6 +8,17 @@ from .models import Lobby, Profile
 from django_countries import countries
 from django.db.models import F
 from django.db import transaction
+from django.contrib.admin.views.decorators import staff_member_required
+
+
+def populate_referral_codes(request):
+    updated = 0
+    for profile in Profile.objects.all():
+        if not profile.referral_code:
+            profile.referral_code = profile.generate_unique_code()
+            profile.save()
+            updated += 1
+    return HttpResponse(f"Referral codes populated for {updated} profiles.")
 
 
 def index(request):

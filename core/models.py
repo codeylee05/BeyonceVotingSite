@@ -9,7 +9,8 @@ class Profile(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     country = CountryField(blank_label='Select country', blank=True)
-    referral_code = models.CharField(max_length=10, unique=True, blank=True, null=True)
+    referral_code = models.CharField(
+        max_length=10, unique=True, blank=True, null=True)
     referred_by = models.ForeignKey(
         'self', null=True, blank=True, on_delete=models.SET_NULL, related_name='referrals')
     referral_count = models.IntegerField(default=0)
