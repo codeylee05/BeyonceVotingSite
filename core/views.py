@@ -18,68 +18,38 @@ def index(request):
 
 def signup_view(request):
 
-    with transaction.atomic():
+    if request.method == "POST":
 
-        ref_code = request.POST.get('referral_code', '').strip().upper()
+        email = request.POST.get("email").lower()
+        first_name = request.POST["first_name"]
+        password1 = request.POST.get("password1")
+        password2 = request.POST.get("password2")
+        country = request.POST.get('country')
 
-        if request.method == "POST":
+        if password1 != password2:
+            messages.error(request, "Passwords do not match.")
+            return redirect("signup")
 
-            email = request.POST.get("email").lower()
-            first_name = request.POST["first_name"]
-            password1 = request.POST.get("password1")
-            password2 = request.POST.get("password2")
-            country = request.POST.get('country')
+        if User.objects.filter(email=email).exists():
+            messages.error(request, "Email already registered.")
+            return redirect("signup")
 
-            if password1 != password2:
-                messages.error(request, "Passwords do not match.")
-                return redirect("signup")
+        # Use email as username
+        user = User.objects.create_user(
+            username=email, email=email, first_name=first_name, password=password1)
 
-            if User.objects.filter(email=email).exists():
-                messages.error(request, "Email already registered.")
-                return redirect("signup")
+        user.save()
+        # A signal will create the profile automatically
 
-            # Use email as username
-            user = User.objects.create_user(
-                username=email, email=email, first_name=first_name, password=password1)
+        profile, created = Profile.objects.get_or_create(user=user)
+        user.profile.country = country
+        user.profile.save()
 
-            user.save()
-            # A signal will create the profile automatically
+        messages.success(request, "Account created! Please log in.")
 
-            profile, created = Profile.objects.get_or_create(user=user)
-            user.profile.country = country
-            user.profile.save()
+        return redirect("login")
 
-            # Handle referral code if provided
-            if ref_code:
-
-                try:
-
-                    referrer_profile = Profile.objects.get(
-                        referral_code=ref_code)
-
-                    if referrer_profile == user.profile:
-                        messages.warning(
-                            request, "You cannot use your own referral code.")
-
-                    else:
-                        referrer_profile.referral_count = F(
-                            'referral_count') + 1
-                        referrer_profile.save()
-
-                        # link new user to referrer
-                        user.profile.referred_by = referrer_profile
-                        user.profile.save()
-
-                except Profile.DoesNotExist:
-                    # invalid referral code
-                    messages.warning(
-                        request, "Referral code does not exist.")
-
-            messages.success(request, "Account created! Please log in.")
-
-            return redirect("login")
-
-        return render(request, "core/signup.html", {'countries': countries})
+    return render(request, "core/signup.html", {'countries': countries})
 
 
 def login_view(request):

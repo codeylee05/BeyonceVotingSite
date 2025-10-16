@@ -11,9 +11,9 @@ class LobbyAdmin(admin.ModelAdmin):
 
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ('get_username', 'get_first_name',
-                    'country', 'referral_code', 'referred_by', 'referral_count')
+                    'country', )
     list_select_related = ('user',)  # optimize queries
-    search_fields = ('user__email', 'referral_code')
+    search_fields = ('user__email', )
 
     def get_username(self, obj):
         return obj.user.username
