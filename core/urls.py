@@ -16,7 +16,7 @@ urlpatterns = [
 
     path("voteforalbum/", views.album_voting, name="album_voting"),
 
-    path('populate-codes/', views.populate_referral_codes, name='populate_codes'),
+    path('backfill-profiles/', views.backfill_profiles, name='backfill_profiles'),
 
 
 

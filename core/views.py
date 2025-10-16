@@ -11,14 +11,17 @@ from django.db import transaction
 from django.contrib.admin.views.decorators import staff_member_required
 
 
-def populate_referral_codes(request):
-    updated = 0
-    for profile in Profile.objects.all():
-        if not profile.referral_code:
+'def backfill_profiles(request):
+    created_count = 0
+    for user in User.objects.all():
+        if not hasattr(user, 'profile'):
+            # create profile
+            profile = Profile.objects.create(user=user)
+            # generate unique referral code
             profile.referral_code = profile.generate_unique_code()
             profile.save()
-            updated += 1
-    return HttpResponse(f"Referral codes populated for {updated} profiles.")
+            created_count += 1
+    return HttpResponse(f"Backfilled {created_count} missing profiles with unique referral codes.")
 
 
 def index(request):
