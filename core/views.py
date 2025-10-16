@@ -11,7 +11,7 @@ from django.db import transaction
 from django.contrib.admin.views.decorators import staff_member_required
 
 
-'def backfill_profiles(request):
+def backfill_profiles(request):
     created_count = 0
     for user in User.objects.all():
         if not hasattr(user, 'profile'):
