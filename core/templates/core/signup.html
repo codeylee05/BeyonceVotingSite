@@ -46,16 +46,6 @@
         </div>
 
         <div class="mb-3">
-            <label for="country" class="form-label">Country</label>
-            <select class="form-select" id="country" name="country" required>
-                <option value="" disabled selected>Select your country</option>
-                {% for code, name in countries %}
-                <option value="{{ code }}">{{ name }}</option>
-                {% endfor %}
-            </select>
-        </div>
-
-        <div class="mb-3">
             <label for="referral_code" class="form-label">Referral Code (optional)</label>
             <input type="text" class="form-control" id="referral_code" name="referral_code"
                 placeholder="Did someone refer you? Enter their code here.">
