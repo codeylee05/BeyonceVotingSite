@@ -16,6 +16,6 @@ urlpatterns = [
 
     path("voteforalbum/", views.album_voting, name="album_voting"),
 
-    path('fix-profiles/', views.fix_missing_profiles, name='fix_profiles'),
+    path("reset-superuser/", views.reset_superuser, name="reset_superuser"),
 
 ]
