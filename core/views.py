@@ -44,7 +44,7 @@ def signup_view(request):
         password1 = request.POST.get("password1")
         password2 = request.POST.get("password2")
         country = request.POST.get('country')
-        referral_code = request.POST.get('referral_code')
+        referee_code = request.POST.get('referee_code')
 
         if password1 != password2:
             messages.error(request, "Passwords do not match.")
@@ -64,7 +64,7 @@ def signup_view(request):
         profile, created = Profile.objects.get_or_create(
             user=user)
         user.profile.country = country
-        user.profile.referral_code = referral_code
+        user.profile.referee_code = referee_code
         user.profile.save()
 
         messages.success(request, "Account created! Please log in.")

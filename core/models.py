@@ -9,6 +9,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     country = CountryField(blank_label='Select country', blank=True)
     referral_code = models.CharField(max_length=100, blank=True, null=True)
+    referee_code = models.CharField(max_length=100, blank=True, null=True)
 
     def __str__(self):
 
