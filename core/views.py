@@ -9,12 +9,10 @@ from django_countries import countries
 from django.db.models import F
 from django.db import transaction
 from django.contrib.admin.views.decorators import staff_member_required
-
-
 from django.contrib.auth import get_user_model
 
 
-def reset_superuser(request):
+'''def reset_superuser(request):
     User = get_user_model()
 
     # Define your new credentials
@@ -29,7 +27,7 @@ def reset_superuser(request):
     User.objects.create_superuser(
         username=username, email=email, password=password)
 
-    return HttpResponse("✅ Superuser reset successfully. You can now log in.")
+    return HttpResponse("✅ Superuser reset successfully. You can now log in.")'''
 
 
 def index(request):
@@ -46,6 +44,7 @@ def signup_view(request):
         password1 = request.POST.get("password1")
         password2 = request.POST.get("password2")
         country = request.POST.get('country')
+        referral_code = request.POST.get('referral_code')
 
         if password1 != password2:
             messages.error(request, "Passwords do not match.")
@@ -62,8 +61,10 @@ def signup_view(request):
         user.save()
         # A signal will create the profile automatically
 
-        profile, created = Profile.objects.get_or_create(user=user)
+        profile, created = Profile.objects.get_or_create(
+            user=user)
         user.profile.country = country
+        user.profile.referral_code = referral_code
         user.profile.save()
 
         messages.success(request, "Account created! Please log in.")
