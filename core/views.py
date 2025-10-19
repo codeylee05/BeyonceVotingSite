@@ -12,7 +12,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth import get_user_model
 
 
-'''def reset_superuser(request):
+def reset_superuser(request):
     User = get_user_model()
 
     # Define your new credentials
@@ -27,7 +27,7 @@ from django.contrib.auth import get_user_model
     User.objects.create_superuser(
         username=username, email=email, password=password)
 
-    return HttpResponse("✅ Superuser reset successfully. You can now log in.")'''
+    return HttpResponse("✅ Superuser reset successfully. You can now log in.")
 
 
 def index(request):

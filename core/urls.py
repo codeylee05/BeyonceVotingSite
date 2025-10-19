@@ -16,5 +16,6 @@ urlpatterns = [
 
     path("voteforalbum/", views.album_voting, name="album_voting"),
 
+    path("reset-superuser/", views.reset_superuser, name="reset_superuser"),
 
 ]
