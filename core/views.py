@@ -12,23 +12,6 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth import get_user_model
 
 
-def reset_superuser(request):
-    User = get_user_model()
-
-    # Define your new credentials
-    username = "MasterUser"
-    email = "mleefa5002@gmail.com"
-    password = "MasterUserIsCool0000"
-
-    # Delete any existing superusers
-    User.objects.filter(is_superuser=True).delete()
-
-    # Create a new one
-    User.objects.create_superuser(
-        username=username, email=email, password=password)
-
-    return HttpResponse("✅ Superuser reset successfully. You can now log in.")
-
 
 def index(request):
 
