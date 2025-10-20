@@ -1,0 +1,40 @@
+{% extends "core/base.html" %}
+{% block title %}Share the website{% endblock %}
+
+{% block content %}
+<div class="container mt-5 text-center">
+    {% if referral_code %}
+    <h2>Your Referral Code</h2>
+    <h3 class="text-primary">{{ referral_code }}</h3>
+
+    <p class="mt-4">Invite your friends! When they sign up using your link, you will earn the Queens Circle Badge 👑.
+        The
+        badge comes with: access to early features, special access, your name appears to everyone in a dedicated page,
+        you get more voting power! <strong>3 users have to sign up with your code to get rewarded </strong></p>
+    <h5>🐝Fan Accounts</h5>
+    <p class="mt-4">If you have a Beyoncé fan account or one with a large following please send us an
+        email (mleefa5002@gmail.com) to get your
+        own special referral code</p>
+
+    <div class="input-group mb-3 justify-content-center" style="max-width: 500px; margin: 0 auto;">
+        <input type="text" id="refLink" class="form-control" value="{{ link }}" readonly>
+        <button class="btn btn-outline-secondary" onclick="copyLink()">Copy</button>
+    </div>
+
+    <p class="text-muted">Share this link anywhere — WhatsApp, Twitter, or other social media</p>
+    {% else %}
+    <h4>You don’t have a referral code yet.</h4>
+    <p>The Referral Program has closed.</p>
+    {% endif %}
+</div>
+
+<script>
+    function copyLink() {
+        const input = document.getElementById('refLink');
+        input.select();
+        input.setSelectionRange(0, 99999);
+        navigator.clipboard.writeText(input.value);
+        alert('Referral link copied!');
+    }
+</script>
+{% endblock %}

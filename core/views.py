@@ -12,7 +12,6 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth import get_user_model
 
 
-
 def index(request):
 
     return render(request, "core/index.html")
@@ -116,3 +115,15 @@ def lobby(request):
 def album_voting(request):
 
     return render(request, "core/album_voting.html")
+
+
+@login_required
+def referral(request):
+    profile = getattr(request.user, "profile", None)
+    referral_code = getattr(profile, "referral_code", None)
+    link = "https://beymore.up.railway.app"
+
+    return render(request, "core/referral.html", {
+        "referral_code": referral_code,
+        "link": link,
+    })

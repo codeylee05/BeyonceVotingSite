@@ -16,5 +16,8 @@ urlpatterns = [
 
     path("voteforalbum/", views.album_voting, name="album_voting"),
 
+    path("share/", views.referral, name="referral"),
+
+
 
 ]
