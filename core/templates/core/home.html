@@ -24,6 +24,13 @@
     <main>
         <div class="intro-section">
             <div class="intro-content text-center">
+                <div class="alert alert-primary alert-dismissible fade show" role="alert" id="index-alert">
+                    <strong>Hey there!</strong> Please share the site with fellow Beyoncé fans! For the voting to be
+                    effective,
+                    we need as
+                    many fans as possible. 💜 Go the Share page(in the navbar) to find out more.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
                 <h1 class="intro-title">Heyyy Hive! 🐝</h1>
                 <p class="intro-text">
                     Here’s your chance to show love to Beyoncé’s legendary discography.
@@ -35,9 +42,7 @@
                     Your voice matters, and Beyoncé would say.. <strong>“Who run the world? You do!”</strong>
                 </p>
 
-                <p class="voting-dates">
-                    The first Album voting session runs from <strong>24 Oct to 4 Nov</strong>
-                </p>
+
                 <a href="{% url 'join_lobby' %}" class="btn-main">✨ Join Lobby ✨</a>
             </div>
         </div>
