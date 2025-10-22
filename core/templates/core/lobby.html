@@ -1,5 +1,45 @@
 {% extends "core/base.html" %}
+{% load static %}
+
 {% block title %}Lobby{% endblock %}
+
+{% block extra_head %}
+<style>
+    /* Basic styling for the list to look like your requested format */
+
+    h2 {
+        margin-top: 25px;
+    }
+
+    .country-stat-item {
+        display: flex;
+        align-items: center;
+        padding: 5px 0;
+    }
+
+    .country-stat-item:last-child {
+        border-bottom: none;
+    }
+
+    .country-name {
+        font-weight: bold;
+        min-width: 200px;
+        /* Adjust as needed */
+    }
+
+    .profile-count {
+        margin-left: 15px;
+        color: #555;
+    }
+
+    .country-flag {
+        width: 24px;
+        /* Adjust flag size */
+        height: auto;
+        margin: 0 10px;
+        /* Optional border for visibility */
+    }
+</style>{% endblock %}
 {% block content %}
 
 {% if messages %}
@@ -19,5 +59,22 @@
         Note: You will not be able to vote if we are not able to verify your email before Voting Period. </p>
 
     <a href="{% url 'album_voting' %}" class="btn-main btn-main-2">✨ Go to Voting ✨</a>
+
+    <!--PROFILE COUNTRIES IN LOBBY-->
+    <h2>Country Stats</h1>
+
+        <div>
+            {% for country, count in country_stats %}
+            <div class="country-stat-item">
+                <span class="country-name">{{ country.name }}</span>
+
+                <img src="{{ country.flag }}" alt="Flag of {{ country.name }}" class="country-flag">
+
+                <span class="profile-count">{{ count }} fan{% if count != 1 %}s{% endif %}</span>
+            </div>
+            {% empty %}
+            <p>No user profiles found with country information.</p>
+            {% endfor %}
+        </div>
 </div>
 {% endblock %}
