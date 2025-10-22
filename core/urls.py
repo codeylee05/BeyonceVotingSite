@@ -19,6 +19,8 @@ urlpatterns = [
     path("voteforalbum/", views.album_voting, name="album_voting"),
 
     path("share/", views.referral, name="referral"),
+    path("account/", views.account_view, name="account"),
+
 
     # Auth-views for password reset
     path('password-reset/',

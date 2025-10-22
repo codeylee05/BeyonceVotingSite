@@ -148,3 +148,14 @@ def referral(request):
         "referral_code": referral_code,
         "link": link,
     })
+
+
+@login_required
+def account_view(request):
+
+    user = request.user
+    profile = getattr(user, "profile", None)
+    return render(request, "core/account.html", {
+        "user": user,
+        "profile": profile,
+    })
