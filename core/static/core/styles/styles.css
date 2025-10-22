@@ -288,14 +288,14 @@ footer {
 }
 
 .account-name {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     margin-bottom: 0.25rem;
     font-weight: 600;
     color: #3c2e8c;
 }
 
 .account-email {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: #555;
     margin-bottom: 0.5rem;
 }

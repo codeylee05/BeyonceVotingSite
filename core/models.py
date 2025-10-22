@@ -10,6 +10,7 @@ class Profile(models.Model):
     country = CountryField(blank_label='Select country', blank=True)
     referral_code = models.CharField(max_length=100, blank=True, null=True)
     referee_code = models.CharField(max_length=100, blank=True, null=True)
+    has_badge = models.BooleanField(default=False)
 
     def __str__(self):
 
