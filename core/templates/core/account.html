@@ -22,6 +22,9 @@
             {{ profile.country.name }}
             <img src="{{ profile.country.flag }}" alt="Flag of {{ profile.country.name }}" class="country-flag">
         </p>
+        {% if profile.has_badge %}
+        <span class="badge bg-warning text-dark">Queen's Circle Member</span>
+        {% endif %}
         {% endif %}
     </div>
 </div>
