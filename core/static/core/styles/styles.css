@@ -110,6 +110,13 @@ footer {
     color: gold !important;
 }
 
+.badge-image-nav {
+    width: 20px;
+    height: 20px;
+    margin-left: 10 px;
+
+}
+
 .nav-link {
     color: #fff;
 }
@@ -201,6 +208,7 @@ footer {
     padding: 30px;
     border-radius: 12px;
     background: #fdfdfd;
+
 }
 
 .count-display {
@@ -278,6 +286,22 @@ footer {
     backdrop-filter: blur(6px);
 }
 
+.profile-pic-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.badge-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(10%, -10%);
+    width: 40px;
+    height: 40px;
+}
+
+
+
 .profile-pic {
     width: 120px;
     height: 120px;
@@ -305,6 +329,40 @@ footer {
     color: #777;
 }
 
+h2 {
+    margin-top: 25px;
+}
+
+.country-stat-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 0;
+    transform: translateX(-20px);
+}
+
+.country-stat-item:last-child {
+    border-bottom: none;
+}
+
+.country-name {
+    font-weight: bold;
+    min-width: 200px;
+    /* Adjust as needed */
+}
+
+.profile-count {
+    margin-left: 15px;
+    color: #555;
+}
+
+.country-flag {
+    width: 24px;
+    /* Adjust flag size */
+    height: auto;
+    margin: 0 10px;
+    /* Optional border for visibility */
+}
 
 
 /* Animations */

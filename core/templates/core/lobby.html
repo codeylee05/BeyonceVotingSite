@@ -4,42 +4,7 @@
 {% block title %}Lobby{% endblock %}
 
 {% block extra_head %}
-<style>
-    /* Basic styling for the list to look like your requested format */
-
-    h2 {
-        margin-top: 25px;
-    }
-
-    .country-stat-item {
-        display: flex;
-        align-items: center;
-        padding: 5px 0;
-    }
-
-    .country-stat-item:last-child {
-        border-bottom: none;
-    }
-
-    .country-name {
-        font-weight: bold;
-        min-width: 200px;
-        /* Adjust as needed */
-    }
-
-    .profile-count {
-        margin-left: 15px;
-        color: #555;
-    }
-
-    .country-flag {
-        width: 24px;
-        /* Adjust flag size */
-        height: auto;
-        margin: 0 10px;
-        /* Optional border for visibility */
-    }
-</style>{% endblock %}
+{% endblock %}
 {% block content %}
 
 {% if messages %}
@@ -63,7 +28,7 @@
     <!--PROFILE COUNTRIES IN LOBBY-->
     <h2>Country Stats</h1>
 
-        <div>
+        <div class="country-stats">
             {% for country, count in country_stats %}
             <div class="country-stat-item">
                 <span class="country-name">{{ country.name }}</span>

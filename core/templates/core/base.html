@@ -27,7 +27,10 @@
             {% if user.is_authenticated %}
             <li class="nav-item me-3 d-flex align-items-center">
                 <span class="navbar-text text-white">
-                    Hi, ✨{{ user.first_name|default:user.username }}✨
+                    Hi, ✨{{ user.first_name|default:user.username }}
+                    ✨ {% if user.profile.has_badge %} <img class="badge-image-nav" src="{% static 'core/badge.svg' %}"
+                        alt="Profile picture" class="profile-pic">
+                    {% endif %}
                 </span>
             </li>
             {% else %}

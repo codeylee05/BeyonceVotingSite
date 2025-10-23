@@ -6,16 +6,21 @@
 {% block content %}
 <div class="account-container">
     <div class="account-card">
-        <img src="{% static 'core/default_profile_image.jpg' %}" alt="Profile picture" class="profile-pic">
+        <div class="profile-pic-wrapper">
+            <img src="{% static 'core/default_profile_image.jpg' %}" alt="Profile picture" class="profile-pic">
+            {% if profile.has_badge %}
+            <img src="{% static 'core/badge.svg' %}" alt="Badge" class="badge-image">
+            {% endif %}
+        </div>
 
         <h2 class="account-name">{{ user.first_name|default:user.username }}</h2>
-
         <p class="account-email">{{ user.email }}</p>
-        {% if profile %}
-        <p class="account-country">{{ profile.country.name }} <img src="{{ profile.country.flag }}"
-                alt="Flag of {{ profile.country.name }}" class="country-flag">
-        </p>
 
+        {% if profile %}
+        <p class="account-country">
+            {{ profile.country.name }}
+            <img src="{{ profile.country.flag }}" alt="Flag of {{ profile.country.name }}" class="country-flag">
+        </p>
         {% endif %}
     </div>
 </div>
