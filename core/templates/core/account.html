@@ -9,7 +9,8 @@
         <div class="profile-pic-wrapper">
             <img src="{% static 'core/default_profile_image.jpg' %}" alt="Profile picture" class="profile-pic">
             {% if profile.has_badge %}
-            <img src="{% static 'core/badge.svg' %}" alt="Badge" class="badge-image">
+            <img src="{% static 'core/badge.svg' %}" alt="Badge" class="badge-image" data-bs-toggle="tooltip"
+                data-bs-placement="top" title="Member of Queen's Circle">
             {% endif %}
         </div>
 
