@@ -46,7 +46,8 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto d-flex flex-row align-items-center">
+                <ul
+                    class="navbar-nav ms-auto d-flex flex-lg-row flex-column align-items-lg-center align-items-center text-center">
 
                     <li class="nav-item me-2">
                         <a class="nav-link" href="{% url 'home' %}">Home</a>
@@ -59,6 +60,9 @@
                     </li>
                     <li class="nav-item me-2">
                         <a class="nav-link" href="{% url 'referral' %}">Share</a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a class="nav-link" href="{% url 'queens_circle' %}">Queen's Circle</a>
                     </li>
 
                     {% if user.is_authenticated %}

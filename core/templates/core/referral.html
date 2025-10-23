@@ -1,4 +1,6 @@
 {% extends "core/base.html" %}
+
+{% load static %}
 {% block title %}Share the website{% endblock %}
 
 {% block content %}
@@ -7,7 +9,9 @@
     <h2>Your Referral Code</h2>
     <h3 class="text-primary">{{ referral_code }}</h3>
 
-    <p class="mt-4">Invite your friends! When they sign up using your link, you will earn the Queens Circle Badge 👑.
+    <p class="mt-4">Invite your friends! When they sign up using your link, you will earn the Queens Circle Badge <img
+            class="badge-image-nav" src="{% static 'core/badge.svg' %}" alt="Badge" data-bs-toggle="tooltip"
+            data-bs-placement="top" title="Member of Queen's Circle" height="30" width="30">.
         The
         badge comes with: access to early features, special access, your name appears to everyone in a dedicated page,
         you get more voting power! <strong>3 users have to sign up with your code to get rewarded </strong></p>

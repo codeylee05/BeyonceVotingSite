@@ -109,21 +109,15 @@ def join_lobby(request):
 @login_required
 def lobby(request):
 
-    # COUNTRIES OF PROFILES IN LOBBY
-    # 1. Aggregate the profile count by the country code
-    # We filter out any profiles where the country might be blank/null
     country_counts_queryset = Profile.objects.exclude(country__isnull=True).exclude(country='').values('country').annotate(
         count=Count('country')
     ).order_by('-count')  # Order by count, descending
 
-    # 2. Convert the list of dictionaries to a list of tuples containing
-    # (Country object, count) for easier access in the template.
     country_stats = []
     for item in country_counts_queryset:
         country_code = item['country']
         profile_count = item['count']
 
-        # Create a Country object from the code using django-countries utility
         country_object = Country(country_code)
 
         country_stats.append((country_object, profile_count))
@@ -159,3 +153,9 @@ def account_view(request):
         "user": user,
         "profile": profile,
     })
+
+
+def queens_circle(request):
+
+    badge_holders = Profile.objects.filter(has_badge=True)
+    return render(request, 'core/queens_circle.html', {'badge_holders': badge_holders})

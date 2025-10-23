@@ -364,6 +364,12 @@ h2 {
     /* Optional border for visibility */
 }
 
+.badge-icon {
+    width: 90px;
+    height: auto;
+    animation: pulse-2 2.5s infinite ease-in-out;
+}
+
 
 /* Animations */
 
@@ -383,9 +389,25 @@ h2 {
     }
 }
 
+@keyframes pulse-2 {
+
+    0%,
+    100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 10px gold);
+    }
+
+    50% {
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 15px #FFD700);
+    }
+}
+
 /* Responsive */
 
 @media (max-width: 768px) {
+
+
     .intro-title {
         font-size: 2rem;
     }
