@@ -348,7 +348,6 @@ h2 {
 .country-name {
     font-weight: bold;
     min-width: 200px;
-    /* Adjust as needed */
 }
 
 .profile-count {
@@ -358,10 +357,8 @@ h2 {
 
 .country-flag {
     width: 24px;
-    /* Adjust flag size */
     height: auto;
     margin: 0 10px;
-    /* Optional border for visibility */
 }
 
 .badge-icon {
@@ -370,6 +367,164 @@ h2 {
     animation: pulse-2 2.5s infinite ease-in-out;
 }
 
+/* Album voting page */
+.album_voting_container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+
+.album_voting_container h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+
+.album-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 2fr));
+    gap: 1.5rem;
+}
+
+.album-card {
+    position: relative;
+    /* placeholder for album cover */
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: flex-end;
+    padding: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    background-size: cover;
+    /* fills the whole card */
+    background-position: center;
+    /* centers the image */
+    background-repeat: no-repeat;
+}
+
+.album-card-dil {
+    animation: shadow-change-1 3s infinite;
+
+}
+
+.album-card-bday {
+    animation: shadow-change-2 3s infinite;
+
+}
+
+.album-card-iasf {
+    animation: shadow-change-3 3s infinite;
+
+}
+
+.album-card-4 {
+    animation: shadow-change-4 3s infinite;
+
+}
+
+.album-card-bey {
+    animation: shadow-change-5 3s infinite;
+
+}
+
+.album-card-lem {
+    animation: shadow-change-6 3s infinite;
+
+}
+
+.album-card-tlg {
+    animation: shadow-change-7 3s infinite;
+
+}
+
+.album-card-ren {
+    animation: shadow-change-8 3s infinite;
+
+}
+
+.album-card-cc {
+    animation: shadow-change-9 3s infinite;
+
+}
+
+.album-overlay {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
+    color: white;
+}
+
+.album-card:hover {
+    transform: translateY(-4px);
+}
+
+
+.album-info {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+
+.album-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+
+.vote-btn {
+    background: rgba(255, 255, 255, 0.9);
+    color: #000;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.vote-rules {
+    max-width: 700px;
+    margin: 0 auto 1.5rem auto;
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #aca8a8;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    text-align: center;
+}
+
+
+.vote-btn:hover {
+    background: #fff;
+}
+
+.album-grid-wrapper {
+    position: relative;
+}
+
+.pre-vote-overlay {
+    position: absolute;
+    inset: 0;
+    /* top:0; bottom:0; left:0; right:0 */
+    background: rgba(100, 100, 100, 0.6);
+    /* greyish semi-transparent */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 12px;
+    z-index: 10;
+    text-align: center;
+    padding: 1rem;
+}
 
 /* Animations */
 
@@ -394,7 +549,7 @@ h2 {
     0%,
     100% {
         transform: scale(1);
-        filter: drop-shadow(0 0 10px gold);
+        filter: drop-shadow(0 0 5px gold);
     }
 
     50% {
@@ -403,7 +558,117 @@ h2 {
     }
 }
 
-/* Responsive */
+@keyframes shadow-change-1 {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 12px rgb(9, 131, 231));
+    }
+
+    50% {
+        filter: drop-shadow(0 0 17px #000000);
+    }
+}
+
+
+@keyframes shadow-change-2 {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 12px rgb(5, 202, 71));
+    }
+
+    50% {
+        filter: drop-shadow(0 0 17px #000000);
+    }
+}
+
+@keyframes shadow-change-3 {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 12px rgb(152, 162, 170));
+    }
+
+    50% {
+        filter: drop-shadow(0 0 17px #000000);
+    }
+}
+
+@keyframes shadow-change-4 {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 12px rgb(129, 4, 231));
+    }
+
+    50% {
+        filter: drop-shadow(0 0 17px #000000);
+    }
+}
+
+@keyframes shadow-change-5 {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 12px rgb(231, 9, 231));
+    }
+
+    50% {
+        filter: drop-shadow(0 0 17px #000000);
+    }
+}
+
+@keyframes shadow-change-6 {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 12px rgb(3, 116, 27));
+    }
+
+    50% {
+        filter: drop-shadow(0 0 17px #000000);
+    }
+}
+
+@keyframes shadow-change-7 {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 12px rgb(232, 255, 26));
+    }
+
+    50% {
+        filter: drop-shadow(0 0 17px #000000);
+    }
+}
+
+@keyframes shadow-change-8 {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 12px rgb(102, 127, 151));
+    }
+
+    50% {
+        filter: drop-shadow(0 0 17px #000000);
+    }
+}
+
+@keyframes shadow-change-9 {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 12px rgb(231, 9, 9));
+    }
+
+    50% {
+        filter: drop-shadow(0 0 17px #000000);
+    }
+}
+
+
+
 
 @media (max-width: 768px) {
 

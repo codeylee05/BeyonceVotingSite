@@ -1,12 +1,136 @@
 {% extends "core/base.html" %}
 
+{% load static %}
+
 {% block title %}
 Vote for Album
 {% endblock %}
 
 {% block content %}
-<div class="container text-center my-5">
-    <h1 class="mb-4 voting-page-title">Beyoncé Album Voting </h1>
+
+<div class="album_voting_container">
+    <h2>Vote for Your Favorite Album</h2>
+
+    <div class="vote-rules">
+        <p>You can vote for any album once per day. The Voting Period is 7 days long. Come back tomorrow to build your
+            voting streak. <strong>Queen's Circle Badge holders have 2 daily votes</strong></p>
+    </div>
+    <div class="album-grid-wrapper">
+        <div class="album-grid">
+
+
+            <div class="album-card album-card-dil"
+                style="background-image: url('{% static 'core/album_covers/dil_cover.jpeg' %}');">
+                <div class="album-overlay">
+
+                    <div class="album-info">
+                        <span class="album-title">Dangerously in Love</span>
+                        <button class="vote-btn">Vote</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="album-card album-card-bday"
+                style="background-image: url('{% static 'core/album_covers/bday_cover.jpeg' %}');">
+                <div class="album-overlay">
+
+                    <div class="album-info">
+                        <span class="album-title">B'Day</span>
+                        <button class="vote-btn">Vote</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="album-card album-card-iasf"
+                style="background-image: url('{% static 'core/album_covers/iasf_cover.png' %}');">
+                <div class="album-overlay">
+                    <div class="album-info">
+                        <span class="album-title">I Am... Sasha Fierce </span>
+                        <button class="vote-btn">Vote</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="album-card album-card-4"
+                style="background-image: url('{% static 'core/album_covers/4_cover.jpeg' %}');">
+                <div class="album-overlay">
+                    <div class="album-info">
+                        <span class="album-title">4</span>
+                        <button class="vote-btn">Vote</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="album-card album-card-bey"
+                style="background-image: url('{% static 'core/album_covers/beyoncest_cover.jpg' %}');">
+                <div class="album-overlay">
+
+                    <div class="album-info">
+                        <span class="album-title">BEYONCÉ</span>
+                        <button class="vote-btn">Vote</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="album-card album-card-lem"
+                style="background-image: url('{% static 'core/album_covers/lemonade_cover.png' %}');">
+                <div class="album-overlay">
+
+                    <div class="album-info">
+                        <span class="album-title">Lemonade</span>
+                        <button class="vote-btn">Vote</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="album-card album-card-tlg"
+                style="background-image: url('{% static 'core/album_covers/tlg_cover.jpg' %}');">
+                <div class="album-overlay">
+
+                    <div class="album-info">
+                        <span class="album-title">The Lion King: The Gift</span>
+                        <button class="vote-btn">Vote</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="album-card album-card-ren"
+                style="background-image: url('{% static 'core/album_covers/renaissance_cover.png' %}');">
+                <div class="album-overlay">
+
+                    <div class="album-info">
+                        <span class="album-title">RENAISSANCE</span>
+                        <button class="vote-btn">Vote</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="album-card album-card-cc"
+                style="background-image: url('{% static 'core/album_covers/cowboy_carter_cover.png' %}');">
+                <div class="album-overlay">
+
+                    <div class="album-info">
+                        <span class="album-title">COWBOY CARTER</span>
+                        <button class="vote-btn">Vote</button>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="pre-vote-overlay">
+            <p>Voting hasn’t started yet — come back on Oct 28, 2025!</p>
+        </div>
+    </div>
+
+</div>
+<!--<div class="container text-center my-5">
+    <h1 class="mb-4 voting-page-title">Beyoncé Album Voting</h1>
+    
     <p class="lead mb-5">Get ready to vote for your favorite Beyoncé album from 28 October 2025.</p>
 
     <div id="countdown" class="d-flex justify-content-center gap-4 flex-wrap">
@@ -27,7 +151,7 @@ Vote for Album
             <p>Seconds</p>
         </div>
     </div>
-</div>
+</div>-->
 
 <script>
     // Hardcoded countdown target date (UTC)
