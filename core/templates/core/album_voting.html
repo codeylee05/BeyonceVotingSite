@@ -6,10 +6,21 @@
 Vote for Album
 {% endblock %}
 
+{% block extra_head %}
+<script src="{% static 'core/scripts/voting.js' %}" defer></script>
+{% endblock %}
+
+
 {% block content %}
+<div id="alert-container"
+     class="position-fixed top-0 start-50 translate-middle-x p-3"
+     style="z-index: 1080; width: 100%; max-width: 600px;">
+</div>
+
 
 <div class="album_voting_container">
     <h2>Vote for Your Favorite Album</h2>
+
 
     <div class="vote-rules">
         <p>You can vote for any album once per day. The Voting Period is 7 days long. Come back tomorrow to build your
@@ -27,19 +38,19 @@ Vote for Album
 
                     <div class="album-info">
                         <span class="album-title">Dangerously in Love</span>
-                        <button class="vote-btn">Vote</button>
+                        <button class="vote-btn" data-album-id="1">Vote</button>
                     </div>
                 </div>
             </div>
 
 
-            <div class="album-card album-card-bday"
+            <div class=" album-card album-card-bday"
                 style="background-image: url('{% static 'core/album_covers/bday_cover.jpeg' %}');">
                 <div class="album-overlay">
 
                     <div class="album-info">
                         <span class="album-title">B'Day</span>
-                        <button class="vote-btn">Vote</button>
+                        <button class="vote-btn" data-album-id="2">Vote</button>
                     </div>
                 </div>
             </div>
@@ -50,18 +61,18 @@ Vote for Album
                 <div class="album-overlay">
                     <div class="album-info">
                         <span class="album-title">I Am... Sasha Fierce </span>
-                        <button class="vote-btn">Vote</button>
+                        <button class="vote-btn" data-album-id="3">Vote</button>
                     </div>
                 </div>
             </div>
 
 
-            <div class="album-card album-card-4"
+            <div class=" album-card album-card-4"
                 style="background-image: url('{% static 'core/album_covers/4_cover.jpeg' %}');">
                 <div class="album-overlay">
                     <div class="album-info">
                         <span class="album-title">4</span>
-                        <button class="vote-btn">Vote</button>
+                        <button class="vote-btn" data-album-id="4">Vote</button>
                     </div>
                 </div>
             </div>
@@ -73,7 +84,7 @@ Vote for Album
 
                     <div class="album-info">
                         <span class="album-title">BEYONCÉ</span>
-                        <button class="vote-btn">Vote</button>
+                        <button class="vote-btn" data-album-id="5">Vote</button>
                     </div>
                 </div>
             </div>
@@ -84,7 +95,7 @@ Vote for Album
 
                     <div class="album-info">
                         <span class="album-title">Lemonade</span>
-                        <button class="vote-btn">Vote</button>
+                        <button class="vote-btn" data-album-id="6">Vote</button>
                     </div>
                 </div>
             </div>
@@ -95,7 +106,7 @@ Vote for Album
 
                     <div class="album-info">
                         <span class="album-title">The Lion King: The Gift</span>
-                        <button class="vote-btn">Vote</button>
+                        <button class="vote-btn" data-album-id="7">Vote</button>
                     </div>
                 </div>
             </div>
@@ -106,7 +117,7 @@ Vote for Album
 
                     <div class="album-info">
                         <span class="album-title">RENAISSANCE</span>
-                        <button class="vote-btn">Vote</button>
+                        <button class="vote-btn" data-album-id="8">Vote</button>
                     </div>
                 </div>
             </div>
@@ -117,20 +128,20 @@ Vote for Album
 
                     <div class="album-info">
                         <span class="album-title">COWBOY CARTER</span>
-                        <button class="vote-btn">Vote</button>
+                        <button class="vote-btn" data-album-id="9">Vote</button>
                     </div>
                 </div>
             </div>
 
 
         </div>
-        <div class="pre-vote-overlay">
+        <!--<div class="pre-vote-overlay">
             <p>Voting hasn’t started yet — come back on Oct 28, 2025!</p>
         </div>
-    </div>
+    </div>--->
 
-</div>
-<!--<div class="container text-center my-5">
+    </div>
+    <!--<div class="container text-center my-5">
     <h1 class="mb-4 voting-page-title">Beyoncé Album Voting</h1>
     
     <p class="lead mb-5">Get ready to vote for your favorite Beyoncé album from 28 October 2025.</p>
@@ -155,28 +166,5 @@ Vote for Album
     </div>
 </div>-->
 
-<script>
-    // Hardcoded countdown target date (UTC)
-    const countDownDate = new Date("Oct 28, 2025 00:00:00 UTC").getTime();
 
-    const x = setInterval(function () {
-        const now = new Date().getTime();
-        const distance = countDownDate - now;
-
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        document.getElementById("days").innerText = days;
-        document.getElementById("hours").innerText = hours;
-        document.getElementById("minutes").innerText = minutes;
-        document.getElementById("seconds").innerText = seconds;
-
-        if (distance < 0) {
-            clearInterval(x);
-            document.getElementById("countdown").innerHTML = "<h2>Voting is Live! 🎉</h2>";
-        }
-    }, 1000);
-</script>
-{% endblock %}
+    {% endblock %}

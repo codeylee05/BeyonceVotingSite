@@ -1,10 +1,14 @@
+from .models import Album, Vote, Profile
+from django.utils import timezone
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Lobby, Profile
+from .models import Lobby, Profile, Album, Vote
 from django_countries import countries
 from django.db.models import F
 from django.db import transaction
@@ -12,6 +16,8 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth import get_user_model
 from django.db.models import Count
 from django_countries.fields import Country
+from django.http import JsonResponse
+from django.utils import timezone
 
 
 def index(request):
@@ -129,7 +135,10 @@ def lobby(request):
 @login_required
 def album_voting(request):
 
-    return render(request, "core/album_voting.html")
+    albums = Album.objects.all()
+
+    return render(request, "core/album_voting.html", {
+        "albums": albums})
 
 
 @login_required
@@ -154,8 +163,83 @@ def account_view(request):
         "profile": profile,
     })
 
+# Removed for now
 
+
+@login_required
 def queens_circle(request):
 
     badge_holders = Profile.objects.filter(has_badge=True)
     return render(request, 'core/queens_circle.html', {'badge_holders': badge_holders})
+
+
+# ------------------Voting Logic -----------------
+
+
+def can_user_vote(user):
+
+    today = timezone.now().date()
+    profile = user.profile  # assuming OneToOne relationship
+    daily_limit = profile.daily_vote_limit
+
+    votes_today = Vote.objects.filter(user=user, date=today).count()
+    return votes_today < daily_limit
+
+
+def can_user_vote(user):
+    """
+    Check if the user can vote today based on badge and daily limit.
+    """
+    daily_limit = 2 if user.profile.has_badge else 1
+    today = timezone.now().date()
+    votes_today = Vote.objects.filter(user=user, date=today).count()
+    return votes_today < daily_limit
+
+
+def can_vote_for_album(user, album):
+    """
+    Check if user can vote for this specific album today.
+    """
+    today = timezone.now().date()
+    if Vote.objects.filter(user=user, album=album, date=today).exists():
+        return False
+    return can_user_vote(user)
+
+
+def vote_album(request, album_id):
+    """
+    Handle AJAX vote request.
+    """
+    if not request.user.is_authenticated:
+        return JsonResponse({'success': False, 'message': 'You must be logged in to vote.'})
+
+    album = get_object_or_404(Album, pk=album_id)
+    user = request.user
+
+    if not can_vote_for_album(user, album):
+        return JsonResponse({'success': False, 'message': 'Oopps! You cannot vote for this album today. See the rules'})
+
+    Vote.objects.create(user=user, album=album)
+    return JsonResponse({'success': True, 'message': 'Slay! Your vote has been recorded! Come back tomorrow to vote again. Note: Queens Circle Members can vote twice daily but for different albums'})
+
+
+# ------------------ Ranking Logic -----------------
+def album_ranking(request):
+    """
+    Return JSON of albums sorted by votes descending.
+    """
+    albums = Album.objects.all()
+    data = []
+
+    for album in albums:
+        vote_count = Vote.objects.filter(album=album).count()
+        data.append({
+            'album_id': album.id,
+            'title': album.title,
+            'votes': vote_count,
+        })
+
+    # Sort descending by votes
+    data.sort(key=lambda x: x['votes'], reverse=True)
+
+    return JsonResponse({'albums': data})

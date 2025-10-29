@@ -2,6 +2,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django_countries.fields import CountryField
+from django.conf import settings
 
 
 class Profile(models.Model):
@@ -27,3 +28,27 @@ class Lobby(models.Model):
     def __str__(self):
 
         return f"{self.user.username} in lobby"
+
+
+class Album(models.Model):
+
+    title = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.title
+
+
+class Vote(models.Model):
+
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             on_delete=models.CASCADE)
+    album = models.ForeignKey(Album, on_delete=models.CASCADE)
+    # stores the day the vote was made
+    date = models.DateField(auto_now_add=True)
+
+    class Meta:
+        # prevents voting for same album more than once per day
+        unique_together = ('user', 'album', 'date')
+
+    def __str__(self):
+        return f"{self.user} → {self.album} on {self.date}"
