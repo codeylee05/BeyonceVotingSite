@@ -1,0 +1,21 @@
+{% extends "admin/base_site.html" %}
+{% block title %}Votes by Album{% endblock %}
+
+{% block content %}
+<h1>Votes grouped by Album</h1>
+
+{% for entry in data %}
+<div style="margin-bottom: 20px;">
+    <h2>{{ entry.album.title }} — {{ entry.vote_count }} vote{{ entry.vote_count|pluralize }}</h2>
+    {% if entry.voters %}
+    <ul>
+        {% for voter in entry.voters %}
+        <li>{{ voter }}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p><em>No votes yet.</em></p>
+    {% endif %}
+</div>
+{% endfor %}
+{% endblock %}
