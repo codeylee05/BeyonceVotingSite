@@ -45,7 +45,6 @@ class VoteAdmin(admin.ModelAdmin):
     list_filter = ('date', 'album')
     search_fields = ('user__username', 'album__title')
     ordering = ('-date',)
-    change_list_template = "admin/votes_by_album.html"
 
     def get_urls(self):
 
