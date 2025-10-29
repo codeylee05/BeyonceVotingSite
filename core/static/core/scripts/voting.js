@@ -3,9 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     voteButtons.forEach(button => {
         button.addEventListener('click', () => {
-            const albumId = button.dataset.albumId;
+            const voteUrl = button.dataset.voteUrl; // use template-provided URL
 
-            fetch(`/vote/${albumId}/`, {
+            fetch(voteUrl, {
                 method: 'POST',
                 headers: {
                     'X-CSRFToken': getCookie('csrftoken'),
@@ -46,6 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // ------------------------
     function showAlert(message, type = 'info') {
         const container = document.getElementById('alert-container');
+        if (!container) return; // avoid errors if container missing
+
         const alert = document.createElement('div');
         alert.className = `alert alert-${type} alert-dismissible fade show`;
         alert.role = 'alert';
@@ -53,9 +55,9 @@ document.addEventListener('DOMContentLoaded', () => {
             ${message}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         `;
-        container.appendChild(alert);
+        container.prepend(alert); // prepend to show above everything
 
-        // Auto-dismiss after 3 seconds
+        // Auto-dismiss after 8 seconds
         setTimeout(() => {
             alert.classList.remove('show');
             setTimeout(() => alert.remove(), 150);

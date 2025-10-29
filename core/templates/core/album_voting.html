@@ -12,9 +12,8 @@ Vote for Album
 
 
 {% block content %}
-<div id="alert-container"
-     class="position-fixed top-0 start-50 translate-middle-x p-3"
-     style="z-index: 1080; width: 100%; max-width: 600px;">
+<div id="alert-container" class="position-fixed top-0 start-50 translate-middle-x p-3"
+    style="z-index: 1080; width: 100%; max-width: 600px;">
 </div>
 
 
@@ -38,7 +37,8 @@ Vote for Album
 
                     <div class="album-info">
                         <span class="album-title">Dangerously in Love</span>
-                        <button class="vote-btn" data-album-id="1">Vote</button>
+                        <button class="vote-btn" data-album-id="1"
+                            data-vote-url="{% url 'vote-album' 1 %}">Vote</button>
                     </div>
                 </div>
             </div>
@@ -50,7 +50,8 @@ Vote for Album
 
                     <div class="album-info">
                         <span class="album-title">B'Day</span>
-                        <button class="vote-btn" data-album-id="2">Vote</button>
+                        <button class="vote-btn" data-album-id="2"
+                            data-vote-url="{% url 'vote-album' 2 %}">Vote</button>
                     </div>
                 </div>
             </div>
@@ -61,7 +62,8 @@ Vote for Album
                 <div class="album-overlay">
                     <div class="album-info">
                         <span class="album-title">I Am... Sasha Fierce </span>
-                        <button class="vote-btn" data-album-id="3">Vote</button>
+                        <button class="vote-btn" data-album-id="3"
+                            data-vote-url="{% url 'vote-album' 3 %}">Vote</button>
                     </div>
                 </div>
             </div>
@@ -72,7 +74,8 @@ Vote for Album
                 <div class="album-overlay">
                     <div class="album-info">
                         <span class="album-title">4</span>
-                        <button class="vote-btn" data-album-id="4">Vote</button>
+                        <button class="vote-btn" data-album-id="4"
+                            data-vote-url="{% url 'vote-album' 4 %}">Vote</button>
                     </div>
                 </div>
             </div>
@@ -84,7 +87,8 @@ Vote for Album
 
                     <div class="album-info">
                         <span class="album-title">BEYONCÉ</span>
-                        <button class="vote-btn" data-album-id="5">Vote</button>
+                        <button class="vote-btn" data-album-id="5"
+                            data-vote-url="{% url 'vote-album' 5 %}">Vote</button>
                     </div>
                 </div>
             </div>
@@ -95,7 +99,8 @@ Vote for Album
 
                     <div class="album-info">
                         <span class="album-title">Lemonade</span>
-                        <button class="vote-btn" data-album-id="6">Vote</button>
+                        <button class="vote-btn" data-album-id="6"
+                            data-vote-url="{% url 'vote-album' 6 %}">Vote</button>
                     </div>
                 </div>
             </div>
@@ -106,7 +111,8 @@ Vote for Album
 
                     <div class="album-info">
                         <span class="album-title">The Lion King: The Gift</span>
-                        <button class="vote-btn" data-album-id="7">Vote</button>
+                        <button class="vote-btn" data-album-id="7"
+                            data-vote-url="{% url 'vote-album' 7 %}">Vote</button>
                     </div>
                 </div>
             </div>
@@ -117,7 +123,8 @@ Vote for Album
 
                     <div class="album-info">
                         <span class="album-title">RENAISSANCE</span>
-                        <button class="vote-btn" data-album-id="8">Vote</button>
+                        <button class="vote-btn" data-album-id="8"
+                            data-vote-url="{% url 'vote-album' 8 %}">Vote</button>
                     </div>
                 </div>
             </div>
@@ -128,7 +135,8 @@ Vote for Album
 
                     <div class="album-info">
                         <span class="album-title">COWBOY CARTER</span>
-                        <button class="vote-btn" data-album-id="9">Vote</button>
+                        <button class="vote-btn" data-album-id="9"
+                            data-vote-url="{% url 'vote-album' 9 %}">Vote</button>
                     </div>
                 </div>
             </div>
