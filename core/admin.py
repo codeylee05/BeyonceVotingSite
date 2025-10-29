@@ -3,6 +3,7 @@ from .models import Lobby, Profile, Album, Vote
 from django.db.models import Count
 from django.template.response import TemplateResponse
 from django.urls import path
+from django.utils.html import format_html
 
 
 @admin.register(Lobby)
@@ -47,6 +48,7 @@ class VoteAdmin(admin.ModelAdmin):
     change_list_template = "admin/votes_by_album.html"
 
     def get_urls(self):
+
         urls = super().get_urls()
         custom_urls = [
             path(
@@ -58,6 +60,7 @@ class VoteAdmin(admin.ModelAdmin):
         return custom_urls + urls
 
     def votes_by_album_view(self, request):
+
         albums = Album.objects.all().order_by('title')
         data = []
         for album in albums:
@@ -74,3 +77,8 @@ class VoteAdmin(admin.ModelAdmin):
             title='Votes grouped by Album',
         )
         return TemplateResponse(request, "admin/votes_by_album.html", context)
+
+    def view_by_album_link(self, obj):
+
+        return format_html('<a href="/admin/core/vote/by-album/">View grouped</a>')
+    view_by_album_link.short_description = "Grouped View"
