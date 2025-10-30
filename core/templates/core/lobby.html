@@ -19,27 +19,27 @@
     <h2>Welcome to the Beymore Voting Lobby</h2>
     <p class="count-display">👥 Currently <strong>{{ count }}</strong> {% if count == 1 %} person is waiting in the
         lobby. {% else %} people are waiting in the lobby. {% endif %}</p>
-    <p class="mt-3">Album Voting session will begin on 28 October 2025! Get ready to defend your favorite Beyoncé
-        era 🎶✨ <br> You will receive an email with more details and for verification close to the Voting Period. <br>
+    <p class="mt-3">The first Album Voting Period will run from 30 October to 5 November 2025!
+        era 🎶✨ <br>
         Note: You will not be able to vote if we are not able to verify your email before Voting Period. </p>
 
     <a href="{% url 'album_voting' %}" class="btn-main btn-main-2">✨ Go to Voting ✨</a>
 
     <!--PROFILE COUNTRIES IN LOBBY-->
-    <h2>Country Stats</h1>
+    <h2>Country Stats</h2>
 
-        <div class="country-stats">
-            {% for country, count in country_stats %}
-            <div class="country-stat-item">
-                <span class="country-name">{{ country.name }}</span>
+    <div class="country-stats">
+        {% for country, count in country_stats %}
+        <div class="country-stat-item">
+            <span class="country-name">{{ country.name }}</span>
 
-                <img src="{{ country.flag }}" alt="Flag of {{ country.name }}" class="country-flag">
+            <img src="{{ country.flag }}" alt="Flag of {{ country.name }}" class="country-flag">
 
-                <span class="profile-count">{{ count }} fan{% if count != 1 %}s{% endif %}</span>
-            </div>
-            {% empty %}
-            <p>No user profiles found with country information.</p>
-            {% endfor %}
+            <span class="profile-count">{{ count }} fan{% if count != 1 %}s{% endif %}</span>
         </div>
+        {% empty %}
+        <p>No user profiles found with country information.</p>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
