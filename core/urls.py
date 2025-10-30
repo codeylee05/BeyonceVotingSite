@@ -17,7 +17,7 @@ urlpatterns = [
     path("account/", views.account_view, name="account"),
     path('queens-circle/', views.queens_circle, name='queens_circle'),
     path('vote/<int:album_id>/', views.vote_album, name='vote_album'),
-    path('album-ranking/', views.album_ranking, name='album-ranking'),
+    path('album-ranking/', views.album_ranking, name='album_ranking'),
 
 
 

@@ -187,9 +187,7 @@ def can_user_vote(user):
 
 
 def can_user_vote(user):
-    """
-    Check if the user can vote today based on badge and daily limit.
-    """
+
     daily_limit = 2 if user.profile.has_badge else 1
     today = timezone.now().date()
     votes_today = Vote.objects.filter(user=user, date=today).count()
@@ -197,9 +195,7 @@ def can_user_vote(user):
 
 
 def can_vote_for_album(user, album):
-    """
-    Check if user can vote for this specific album today.
-    """
+
     today = timezone.now().date()
     if Vote.objects.filter(user=user, album=album, date=today).exists():
         return False
@@ -223,23 +219,8 @@ def vote_album(request, album_id):
     return JsonResponse({'success': True, 'message': 'Slay! Your vote has been recorded! Come back tomorrow to vote again. Note: Queens Circle Members can vote twice daily but for different albums'})
 
 
-# ------------------ Ranking Logic -----------------
+# Ranking Page
 def album_ranking(request):
-    """
-    Return JSON of albums sorted by votes descending.
-    """
-    albums = Album.objects.all()
-    data = []
 
-    for album in albums:
-        vote_count = Vote.objects.filter(album=album).count()
-        data.append({
-            'album_id': album.id,
-            'title': album.title,
-            'votes': vote_count,
-        })
-
-    # Sort descending by votes
-    data.sort(key=lambda x: x['votes'], reverse=True)
-
-    return JsonResponse({'albums': data})
+    albums = Album.objects.annotate(votes=Count('vote')).order_by('-votes')
+    return render(request, 'core/album_ranking.html', {'albums': albums})

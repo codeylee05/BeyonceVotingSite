@@ -1,0 +1,39 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}Album Ranking{% endblock %}
+
+{% block content %}
+<div class="ranking-container" style="max-width:600px; margin:0 auto; text-align:center;">
+    <h2>Album Rankings</h2>
+
+    <div class="ranking-list" style="margin-top:30px;">
+        {% for album in albums %}
+        <div class="ranking-item"
+            style="margin:15px 0; display:flex; justify-content:space-between; align-items:center; padding:10px 15px; border-radius:8px; background-color:#f0f0f0; transition: all 0.3s;">
+            <span class="album-name">{{ album.title }}</span>
+            <span class="album-votes"
+                style="background-color:#f39c12; color:white; padding:5px 10px; border-radius:5px;">
+                {{ album.votes }} votes
+            </span>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const items = document.querySelectorAll('.ranking-item');
+        items.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.transform = 'scale(1.02)';
+                item.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+            });
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'scale(1)';
+                item.style.boxShadow = 'none';
+            });
+        });
+    });
+</script>
+{% endblock %}
