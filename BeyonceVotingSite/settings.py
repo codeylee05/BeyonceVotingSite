@@ -20,14 +20,14 @@ DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 ALLOWED_HOSTS = ['beymore.up.railway.app', '127.0.0.1', 'localhost']
 
 
-''''if DEBUG:
+if DEBUG:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
             "NAME": BASE_DIR / "db.sqlite3",
         }
     }
-else:'''
+else:
 DATABASES = {
     "default": dj_database_url.parse(
         os.environ.get("DATABASE_URL"),
