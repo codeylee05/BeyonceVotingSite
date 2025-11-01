@@ -16,9 +16,29 @@ Vote for Album
     style="z-index: 1080; width: 100%; max-width: 600px;">
 </div>
 
+<div id="countdown-container" style="
+    text-align:center; 
+    margin:20px auto;
+    font-size:1.1rem;
+    font-weight:600;
+    color: rgb(180, 19, 19);
+    background:rgba(255, 255, 255, 0.1);
+    border-radius:12px;
+    padding:10px 15px;
+    width:max-content;
+    animation: pulseGlow 2s infinite;
+    box-shadow:0 0 10px rgba(180, 19, 19, 0.3);
+">
+    Voting ends in
+    <span id="days">0</span>d
+    <span id="hours">0</span>h
+    <span id="minutes">0</span>m
+    <span id="seconds">0</span>s
+</div>
+
 
 <div class="album_voting_container">
-    <h2>Vote for Your Favorite Album</h2>
+    <h2 class="voteforalbum-header">Vote for Your Favorite Album</h2>
 
 
     <div class="vote-rules">
@@ -145,34 +165,47 @@ Vote for Album
         </div>
         <!--<div class="pre-vote-overlay">
             <p>Voting hasn’t started yet — come back on Oct 28, 2025!</p>
-        </div>
-    </div>--->
-
+        </div>-->
     </div>
-    <!--<div class="container text-center my-5">
-    <h1 class="mb-4 voting-page-title">Beyoncé Album Voting</h1>
-    
-    <p class="lead mb-5">Get ready to vote for your favorite Beyoncé album from 28 October 2025.</p>
-
-    <div id="countdown" class="d-flex justify-content-center gap-4 flex-wrap">
-        <div class="timer-box p-3 rounded shadow text-white">
-            <h2 id="days">0</h2>
-            <p>Days</p>
-        </div>
-        <div class="timer-box p-3 rounded shadow text-white">
-            <h2 id="hours">0</h2>
-            <p>Hours</p>
-        </div>
-        <div class="timer-box p-3 rounded shadow text-white">
-            <h2 id="minutes">0</h2>
-            <p>Minutes</p>
-        </div>
-        <div class="timer-box p-3 rounded shadow text-white">
-            <h2 id="seconds">0</h2>
-            <p>Seconds</p>
-        </div>
-    </div>
-</div>-->
 
 
-    {% endblock %}
+
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const countdownTarget = new Date("Nov 5, 2025 23:59:59").getTime();
+        const daysEl = document.getElementById("days");
+        const hoursEl = document.getElementById("hours");
+        const minutesEl = document.getElementById("minutes");
+        const secondsEl = document.getElementById("seconds");
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = countdownTarget - now;
+
+            if (distance <= 0) {
+                document.getElementById("countdown-container").innerText = "Voting period has ended";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            daysEl.innerText = days;
+            hoursEl.innerText = hours;
+            minutesEl.innerText = minutes;
+            secondsEl.innerText = seconds;
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    });
+</script>
+
+
+
+{% endblock %}
