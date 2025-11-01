@@ -37,16 +37,19 @@ Vote for Album
 </div>
 
 
+
 <div class="album_voting_container">
     <h2 class="voteforalbum-header">Vote for Your Favorite Album</h2>
 
 
     <div class="vote-rules">
-        <p>You can vote for any album once per day. The Voting Period is 7 days long. Come back tomorrow to build your
+        <p>You can vote for any album once per day. Come back tomorrow to build your
             voting streak. <strong>Queen's Circle Badge holders have 2 daily votes</strong><br><a
                 style="text-decoration: none; font-style: italic;" href="{% url 'referral' %}">How to get the Badge?</a>
         </p>
+
     </div>
+
     <div class="album-grid-wrapper">
         <div class="album-grid">
 
@@ -175,7 +178,7 @@ Vote for Album
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const countdownTarget = new Date("Nov 5, 2025 23:59:59").getTime();
+        const countdownTarget = new Date("Nov 7, 2025 23:59:59").getTime();
         const daysEl = document.getElementById("days");
         const hoursEl = document.getElementById("hours");
         const minutesEl = document.getElementById("minutes");

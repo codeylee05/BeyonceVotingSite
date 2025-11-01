@@ -534,6 +534,12 @@ h2 {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
+.badge-link {
+    text-align: center;
+    font-size: 1rem;
+
+}
+
 
 /* Animations */
 
