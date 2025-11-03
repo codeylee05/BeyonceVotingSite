@@ -18,7 +18,7 @@ urlpatterns = [
     path('queens-circle/', views.queens_circle, name='queens_circle'),
     path('vote/<int:album_id>/', views.vote_album, name='vote_album'),
     path('album-ranking/', views.album_ranking, name='album_ranking'),
-    path("admin/temp-1/", views.non_voters_list, name="non_voters"),
+    '''path("admin/temp-1/", views.non_voters_list, name="non_voters"),'''
 
 
 
