@@ -20,14 +20,12 @@ from django.http import JsonResponse
 from django.utils import timezone
 
 
-'''@staff_member_required'''  # Waived for my tester
-
-
+'''@staff_member_required
 def non_voters_list(request):
 
     non_voters = User.objects.filter(vote__isnull=True)
     usernames = ", ".join(non_voters.values_list("username", flat=True))
-    return HttpResponse(f"Is null: {usernames or 'None — all have voted.'}")
+    return HttpResponse(f"Is null: {usernames or 'None — all have voted.'}")'''
 
 
 def index(request):
